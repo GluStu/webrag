@@ -32,18 +32,6 @@ def get_store() -> FaissStore:
     return _store
 
 
-# @app.post("/ingest-url", response_model=IngestUrlResponse, status_code=202)
-# def ingest_url(req: IngestUrlRequest, db: Session = Depends(get_db)):
-#     if not is_http_url(req.url):
-#         raise HTTPException(400, f"Invalid URL scheme (must be http/https), {req.url}")
-#     ing = Ingestion(url=str(req.url), status="pending")
-#     db.add(ing)
-#     db.commit()
-#     db.refresh(ing)
-
-#     # publish to queue
-#     publish_ingest_job(str(ing.id), ing.url)
-#     return IngestUrlResponse(ingestion_id=ing.id, status="queued")
 @app.post("/ingest-url", response_model=IngestUrlResponse, status_code=202)
 def ingest_url(req: IngestUrlRequest, db: Session = Depends(get_db)):
     url = str(req.url).strip()
@@ -105,3 +93,4 @@ def query(req: QueryRequest, db: Session = Depends(get_db)):
 
     answer, used_llm = answer_with_llm(req.query, packed)
     return QueryResponse(answer=answer, citations=citations, used_llm=used_llm)
+
