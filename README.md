@@ -48,51 +48,33 @@ Sentence-Transformers: runs locally by default (no external dependency), swap mo
 
 ---
 ## Layout
+<details>
+<summary><code>webrag/</code> Project Structure</summary>
+
 webrag/
-
-  ├─ app/
-  
-  │  ├─ __init__.py
-  
-  │  ├─ api.py                 # FastAPI app (POST /ingest-url, POST /query, GET /ingestions/{id}, GET /health)
-  │  ├─ config.py              # Settings via env vars
-  
-  │  ├─ db.py                  # SQLAlchemy engine/session/base
-  
-  │  ├─ models.py              # SQLAlchemy models (Ingestion, Chunk)
-  
-  │  ├─ schemas.py             # Pydantic request/response models
-  
-  │  ├─ queue.py               # RabbitMQ publisher helper
-  
-  │  ├─ fetcher.py             # Robust web fetch + content extraction (trafilatura + bs4 fallback)
-  
-  │  ├─ chunker.py             # Token-based chunking with tiktoken "o200k_base"
-  
-  │  ├─ embeddings.py          # Sentence-Transformers wrapper (+ normalization)
-  
-  │  ├─ vectorstore.py         # FAISS index wrapper with file locking
-  
-  │  ├─ llm.py                 # LLM answer synthesis (OpenAI optional, safe fallback)
-  
-  │  └─ utils.py               # small helpers
-  
-  ├─ worker/
-  
-  │  └─ worker.py              # RabbitMQ consumer: fetch → chunk → embed → index → persist
-  
-  ├─ scripts/
-  
-  │  └─ init_db.py             # Create tables if they don't exist
-  
-  ├─ data/                     # created at runtime (faiss index + lock live here)
-  
-  ├─ env_example.txt
-  
-  ├─ requirements.txt
-  
-  └─ README.md
-
+├─ app/
+│  ├─ __init__.py
+│  ├─ api.py                 # FastAPI app (POST /ingest-url, POST /query, GET /ingestions/{id}, GET /health)
+│  ├─ config.py              # Settings via env vars
+│  ├─ db.py                  # SQLAlchemy engine/session/base
+│  ├─ models.py              # SQLAlchemy models (Ingestion, Chunk)
+│  ├─ schemas.py             # Pydantic request/response models
+│  ├─ queue.py               # RabbitMQ publisher helper
+│  ├─ fetcher.py             # Robust web fetch + content extraction (trafilatura + bs4 fallback)
+│  ├─ chunker.py             # Token-based chunking with tiktoken "o200k_base"
+│  ├─ embeddings.py          # Sentence-Transformers wrapper (+ normalization)
+│  ├─ vectorstore.py         # FAISS index wrapper with file locking
+│  ├─ llm.py                 # LLM answer synthesis (OpenAI optional, safe fallback)
+│  └─ utils.py               # small helpers
+├─ worker/
+│  └─ worker.py              # RabbitMQ consumer: fetch → chunk → embed → index → persist
+├─ scripts/
+│  └─ init_db.py             # Create tables if they don't exist
+├─ data/                     # created at runtime (faiss index + lock live here)
+├─ .env.example
+├─ requirements.txt
+└─ README.md
+</details>
 ---
 ## API's
 
