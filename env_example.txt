@@ -1,0 +1,24 @@
+# Server
+APP_ENV=dev
+
+# PostgreSQL (SQLAlchemy URL)
+DATABASE_URL=postgresql+psycopg2://raguser:ragpass@localhost:5432/ragdb
+
+# RabbitMQ
+RABBITMQ_URL=amqp://guest:guest@localhost:5672/
+
+# Vector store paths
+FAISS_INDEX_PATH=./data/index.faiss
+INDEX_LOCK_PATH=./data/index.lock
+
+# Embeddings
+EMBEDDING_MODEL_NAME=sentence-transformers/all-MiniLM-L6-v2
+
+# Chunking
+CHUNK_TOKENS=800
+CHUNK_OVERLAP=100
+
+# Optional LLM
+USE_LLM = 0
+LLM_API_KEY= #Your api key
+LLM_MODEL= gemini-2.5-flash
