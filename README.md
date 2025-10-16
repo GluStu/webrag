@@ -88,13 +88,13 @@ curl -X POST http://localhost:8000/query \
     RabbitMQ
 
 1. Clone repo
-```bash
-git clone https://github.com/GluStu/webrag.git
-cd webrag
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+    ```bash
+    git clone https://github.com/GluStu/webrag.git
+    cd webrag
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+    ```
 
 2. Configure environment
 
