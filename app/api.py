@@ -12,7 +12,6 @@ from app.config import settings
 from app.embeddings import EmbeddingModel
 from app.vectorstore import FaissStore
 from app.llm import answer_with_llm
-from app.utils import is_http_url
 
 app = FastAPI(title="RAG-Websites", version="0.1.0")
 
@@ -93,4 +92,5 @@ def query(req: QueryRequest, db: Session = Depends(get_db)):
 
     answer, used_llm = answer_with_llm(req.query, packed)
     return QueryResponse(answer=answer, citations=citations, used_llm=used_llm)
+
 
